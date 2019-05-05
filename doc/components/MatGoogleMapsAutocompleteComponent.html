@@ -1081,7 +1081,7 @@ export class MatGoogleMapsAutocompleteComponent implements OnInit {
   ngOnInit(): void {
     this.addressValidator.subscribe(this.onNewPlaceResult);
 
-    const options: any &#x3D; {
+    const options: AutocompleteOptions &#x3D; {
       // types: [&#x27;address&#x27;],
       // componentRestrictions: {country: this.country},
       placeIdOnly: this.placeIdOnly,
@@ -1091,9 +1091,9 @@ export class MatGoogleMapsAutocompleteComponent implements OnInit {
     };
 
     // tslint:disable-next-line:no-unused-expression
-    this.country ? options.push({componentRestrictions: {country: this.country}}) : null;
+    this.country ? options.componentRestrictions &#x3D; {country: this.country} : null;
     // tslint:disable-next-line:no-unused-expression
-    this.country ? options.push({types: this.types}) : null;
+    this.country ? options.types &#x3D; this.types : null;
 
     this.autoCompleteOptions &#x3D; Object.assign(this.autoCompleteOptions, options);
     this.initGoogleMapsAutocomplete();
